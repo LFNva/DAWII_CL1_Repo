@@ -12,15 +12,16 @@ import lombok.NoArgsConstructor;
 public class Alumno {
 
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer IdAlumno;
-    @Column(name = "ApeAlumno")
+    @Column(name = "apealumno")
     private String ApeAlumno;
-    @Column(name = "NomAlumno")
+    @Column(name = "nomalumno")
     private String NomAlumno;
-    @Column(name = "Proce")
+    @Column(name = "proce")
     private String Proce;
     @ManyToOne
-    @JoinColumn(name = "IdEsp")
-    private Especialidad IdEsp;
+    @JoinColumn(name = "idesp")
+    private Especialidad especialidad;
 
 }

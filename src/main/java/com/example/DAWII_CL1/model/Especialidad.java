@@ -1,9 +1,6 @@
 package com.example.DAWII_CL1.model;
 
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
-import jakarta.persistence.Table;
+import jakarta.persistence.*;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
@@ -14,10 +11,11 @@ import java.text.DecimalFormat;
 @Table(name = "especialidad")
 public class Especialidad {
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer IdEsp;
-    @Column(name = "NomEsp")
+    @Column(name = "nomesp")
     private String NomEsp;
-    @Column(name = "Costo")
-    private DecimalFormat Costo;
+    @Column(name = "costo")
+    private Double Costo;
 
 }

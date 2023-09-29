@@ -12,12 +12,13 @@ import java.util.Date;
 @Table(name = "asistencia")
 public class Asistencia {
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer IdAsistencia;
-    @Column(name = "Fecha")
+    @Column(name = "fecha")
     private Date Fecha;
-    @Column(name = "Asistio")
+    @Column(name = "asistio")
     private Boolean Asistio;
     @ManyToOne
-    @JoinColumn(name = "IdAlumno")
-    private Alumno IdAlumno;
+    @JoinColumn(name = "idalumno")
+    private Alumno alumno;
 }
