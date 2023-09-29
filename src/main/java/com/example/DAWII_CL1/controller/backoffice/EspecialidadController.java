@@ -11,7 +11,7 @@ import java.util.List;
 
 @Controller
 @AllArgsConstructor
-@RequestMapping
+@RequestMapping("/especialidad")
 public class EspecialidadController {
 
 private EspecialidadService especialidadService;

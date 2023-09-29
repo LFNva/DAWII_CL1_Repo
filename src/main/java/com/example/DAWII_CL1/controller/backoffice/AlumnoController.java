@@ -7,6 +7,7 @@ import com.example.DAWII_CL1.response.ResultadoResponse;
 import com.example.DAWII_CL1.service.AlumnoService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -17,6 +18,12 @@ public class AlumnoController {
 
     @Autowired
     private AlumnoService alumnoService;
+
+    @GetMapping("")
+    public String index(Model model){
+        model.addAttribute("listaAlumnos",alumnoService.listarAlumnos());
+        return "/alumno/frmMantalumno";
+    }
 
     @GetMapping("/listarAlumnos")
     @ResponseBody

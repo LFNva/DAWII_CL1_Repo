@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en"  xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script th:src="@{/scripts/jsweb/alumno/frmMantalumno.js}"
+        type="text/javascript"></script>
+<div class="card ">
+    <div class="card-header text-bg-dark mb-3">
+        Mantenimiento de Alumnos
+    </div>
+    <div class="card-body">
+        <button id="btnagregar"
+                type="button" class="btn btn-primary"><i class="fas fa-plus"></i> Agregar</button>
+        <hr />
+        <div id="mensaje"></div>
+        <table id="tblalumno" class="table">
+            <thead>
+            <tr>
+                <th scope="col">Código</th>
+                <th scope="col">NomAlumno</th>
+                <th scope="col">ApeAlumno</th>
+                <th scope="col">Proce</th>
+                <th scope="col">Especialidad</th>
+                <th scope="col">Actualizar</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr th:each="alu :${listaAlumnos}">
+                <td th:text="${alu.idalumno}"></td>
+                <td th:text="${alu.nomalumno}"></td>
+                <td th:text="${alu.apealumno}"></td>
+                <td th:text="${alu.proce}"></td>
+                <td th:text="${alu.especialidad.nomesp}"></td>
+                <td>
+                    <button type="button" class="btn btn-info btnactualizar"
+                            th:data-aluid="${alu.idalumno}"
+                            th:data-alunom="${alu.nomalumno}"
+                            th:data-aluape="${alu.apealumno}"
+                            th:data-aluproce="${alu.proce}"
+                            th:data-aluesp="${alu.especialidad.idesp}"><i class="fas fa-edit"></i></button>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+<!-- Modal Registrar / Actualizar Alumno -->
+<div class="modal fade" id="modalNuevo" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h1 class="modal-title fs-5" id="exampleModalLabel">Alumno</h1>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <div class="mb-3">
+                    <label for="txtnomalumno" class="form-label">Nombre</label>
+                    <input type="text" class="form-control" id="txtnomalumno">
+                </div>
+                <div class="mb-3">
+                    <label for="txtapealumno" class="form-label">Apellidos</label>
+                    <input type="text" class="form-control" id="txtapealumno">
+                </div>
+                <div class="mb-3">
+                    <label for="txtprocealumno" class="form-label">Proce</label>
+                    <input type="text" class="form-control" id="txtprocealumno">
+                </div>
+                <div class="mb-3">
+                    <label for="cboespecialidad" class="form-label">Especialidad</label>
+                    <select id="cboespecialidad" class="form-control"></select>
+                </div>
+                <input type="hidden" id="hddidalu" value="0">
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal"><i class="fas fa-times"></i> Cancelar</button>
+                <button type="button" id="btnguardar" class="btn btn-primary"><i class="fas fa-save"></i> Guardar</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+</body>
+</html>
